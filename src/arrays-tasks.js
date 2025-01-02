@@ -453,8 +453,20 @@ function getIndicesOfOddNumbers(numbers) {
  *    getHexRGBValues([ 0, 255, 16777215]) => [ '#000000', '#0000FF', '#FFFFFF' ]
  *    getHexRGBValues([]) => []
  */
-function getHexRGBValues(/* arr */) {
-  throw new Error('Not implemented');
+function getHexRGBValues(arr) {
+  if (arr.length === 0) {
+    return [];
+  }
+  return arr.map((item) => {
+    const R = Math.floor(item / 256 ** 2) % 256;
+    const G = Math.floor(item / 256) % 256;
+    const B = item % 256;
+
+    return `#${R.toString(16).padStart(2, '0')}${G.toString(16).padStart(
+      2,
+      '0'
+    )}${B.toString(16).padStart(2, '0')}`.toUpperCase();
+  });
 }
 
 /**
